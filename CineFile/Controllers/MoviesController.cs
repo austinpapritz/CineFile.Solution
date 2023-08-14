@@ -31,6 +31,11 @@ public class MoviesController : ControllerBase
             query = query.Where(entry => entry.Genre == genre);
         }
 
+        if (title == null && genre == null)
+        {
+            return await _db.Movies.ToListAsync();
+        }
+
         return await query.ToListAsync();
     }
 
