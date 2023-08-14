@@ -15,12 +15,31 @@ public class MoviesController : ControllerBase
         _db = db;
     }
 
-    // GET api/movies
+    // GET: api/Movies
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Movie>>> GetAllMovies()
+    public async Task<ActionResult<IEnumerable<Movie>>> GetMovies(string title, string genre)
     {
-        return await _db.Movies.ToListAsync();
+        IQueryable<Movie> query = _db.Movies.AsQueryable();
+
+        if (title != null)
+        {
+            query = query.Where(entry => entry.Title == title);
+        }
+
+        if (genre != null)
+        {
+            query = query.Where(entry => entry.Genre == genre);
+        }
+
+        return await query.ToListAsync();
     }
+
+    // // GET api/movies
+    // [HttpGet]
+    // public async Task<ActionResult<IEnumerable<Movie>>> GetAllMovies()
+    // {
+    //     return await _db.Movies.ToListAsync();
+    // }
 
     // GET: api/Movies/5
     [HttpGet("{id}")]
