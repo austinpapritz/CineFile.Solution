@@ -35,4 +35,65 @@ public class MoviesController : ControllerBase
 
         return movie;
     }
+
+    // POST api/movies
+    [HttpPost]
+    public async Task<ActionResult<Movie>> Post(Movie movie)
+    {
+        _db.Movies.Add(movie);
+        await _db.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetMovieById), new { id = movie.MovieId }, movie);
+    }
+
+    // PUT: api/movies/1
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put(int id, Movie movie)
+    {
+        if (id != movie.MovieId)
+        {
+            return BadRequest();
+        }
+
+        _db.Movies.Update(movie);
+
+        try
+        {
+            await _db.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!MovieExists(id))
+            {
+                return NotFound();
+            }
+            else
+            {
+                throw;
+            }
+        }
+
+        return NoContent();
+    }
+
+    // DELETE: api/movies/5
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMovie(int id)
+    {
+        Movie movie = await _db.Movies.FindAsync(id);
+
+        if (movie == null)
+        {
+            return NotFound();
+        }
+
+        _db.Movies.Remove(movie);
+        await _db.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    private bool MovieExists(int id)
+    {
+        return _db.Movies.Any(e => e.MovieId == id);
+    }
 }
