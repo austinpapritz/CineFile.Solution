@@ -4,7 +4,7 @@
 
 namespace CineFile.Migrations
 {
-    public partial class BugFixMigration : Migration
+    public partial class RequiredTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -17,7 +17,7 @@ public class MoviesController : ControllerBase
 
     // GET: api/Movies
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Movie>>> GetMovies(string title, string genre)
+    public async Task<ActionResult<IEnumerable<Movie>>> GetMovies(string? title, string? genre)
     {
         IQueryable<Movie> query = _db.Movies.AsQueryable();
 

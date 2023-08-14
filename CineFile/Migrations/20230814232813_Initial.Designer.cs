@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CineFile.Migrations
 {
     [DbContext(typeof(CineFileContext))]
-    [Migration("20230814204542_MovieGenre")]
-    partial class MovieGenre
+    [Migration("20230814232813_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,32 +42,32 @@ namespace CineFile.Migrations
                         new
                         {
                             MovieId = 1,
-                            Genre = "Woolly Mammoth",
+                            Genre = "Childrens",
                             Title = "Matilda"
                         },
                         new
                         {
                             MovieId = 2,
-                            Genre = "Dinosaur",
-                            Title = "Rexie"
+                            Genre = "Action",
+                            Title = "Ironman"
                         },
                         new
                         {
                             MovieId = 3,
-                            Genre = "Dinosaur",
-                            Title = "Matilda"
+                            Genre = "Romance",
+                            Title = "Edward Scissorhands"
                         },
                         new
                         {
                             MovieId = 4,
-                            Genre = "Shark",
-                            Title = "Pip"
+                            Genre = "Childrens",
+                            Title = "Pippy Longstocking"
                         },
                         new
                         {
                             MovieId = 5,
-                            Genre = "Dinosaur",
-                            Title = "Bartholomew"
+                            Genre = "Action",
+                            Title = "John Wick 2"
                         });
                 });
 #pragma warning restore 612, 618

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CineFile.Migrations
 {
     [DbContext(typeof(CineFileContext))]
-    [Migration("20230814232050_BugFixMigration")]
-    partial class BugFixMigration
+    [Migration("20230814233603_RequiredTest")]
+    partial class RequiredTest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,11 +28,13 @@ namespace CineFile.Migrations
 
                     b.Property<string>("Genre")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("MovieId");
 
