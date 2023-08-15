@@ -10,4 +10,5 @@ public class Movie
     public string Title { get; set; }
     [StringLength(20)]
     public string Genre { get; set; }
+    List<Comment> Comments { get; set; }
 }
