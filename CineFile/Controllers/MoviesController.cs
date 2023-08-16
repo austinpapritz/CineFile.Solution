@@ -119,7 +119,7 @@ public class MoviesController : ControllerBase
     [HttpGet("{MovieId}/Comments")]
     public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByMovieId(int MovieId)
     {
-        // Grab list of movies that match the MovieId parameter
+        // Grab list of movies that match the MovieId parameter.
         List<Comment> query = await _db.Comments.Where(c => c.MovieId == MovieId).Include(c => c.User).ToListAsync();
         return query;
     }
