@@ -39,13 +39,6 @@ public class MoviesController : ControllerBase
         return await query.ToListAsync();
     }
 
-    // // GET api/movies
-    // [HttpGet]
-    // public async Task<ActionResult<IEnumerable<Movie>>> GetAllMovies()
-    // {
-    //     return await _db.Movies.ToListAsync();
-    // }
-
     // GET: api/Movies/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Movie>> GetMovieById(int id)
@@ -120,4 +113,16 @@ public class MoviesController : ControllerBase
     {
         return _db.Movies.Any(e => e.MovieId == id);
     }
+
+    // Get route for comments by MovieId
+    // GET: api/Movies/5/Comments
+    [HttpGet("{MovieId}/Comments")]
+    public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByMovieId(int MovieId)
+    {
+        // Grab list of movies that match the MovieId parameter
+        List<Comment> query = await _db.Comments.Where(c => c.MovieId == MovieId).Include(c => c.User).ToListAsync();
+        return query;
+    }
+
+    // Post route for user commenting on a movie
 }

@@ -25,13 +25,12 @@ public class CineFileContext : DbContext
 
     builder.Entity<User>()
         .HasData(
-            new User { UserId = 1, Username = "User1", Pasword = "password123" },
-            new User { UserId = 2, Username = "User2", Pasword = "password123" },
-            new User { UserId = 3, Username = "User3", Pasword = "password123" },
-            new User { UserId = 4, Username = "User4", Pasword = "password123" },
-            new User { UserId = 5, Username = "User5", Pasword = "password123" }
+            new User { UserId = 1, Username = "User1", Password = "password123" },
+            new User { UserId = 2, Username = "User2", Password = "password123" },
+            new User { UserId = 3, Username = "User3", Password = "password123" },
+            new User { UserId = 4, Username = "User4", Password = "password123" },
+            new User { UserId = 5, Username = "User5", Password = "password123" }
         );
-
 
     builder.Entity<Comment>()
         .HasData(
